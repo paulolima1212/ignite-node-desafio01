@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database.db"
+}
+
+model Task {
+  id           String    @id @default(uuid())
+  title        String
+  description  String
+  completed_at DateTime?
+  created_at   DateTime  @default(now())
+  updated_at   DateTime?
+
+  @@map("tasks")
+}
